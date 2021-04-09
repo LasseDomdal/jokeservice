@@ -1,0 +1,14 @@
+{{!-- jokeservice.hbs --}}
+<h1>Jokes</h1>
+<ul>
+    {{#each jokes}}
+    <li>{{setup}}</li>
+    <li>{{punchline}}</li>
+    {{/each}}
+</ul>
+
+<label for="setup">Setup</label>
+<input id="setup" type="text" />
+<label for="punchline">Punchline</label>
+<input id="punchline" type="text" />
+<button>Ny joke</button>
