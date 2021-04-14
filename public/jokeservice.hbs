@@ -2,8 +2,7 @@
 <h1>Jokes</h1>
 <ul>
     {{#each jokes}}
-    <li>{{setup}}</li>
-    <li>{{punchline}}</li>
+    <li>{{setup}} - {{punchline}}</li>
     {{/each}}
 </ul>
 
@@ -11,4 +10,6 @@
 <input id="setup" type="text" />
 <label for="punchline">Punchline</label>
 <input id="punchline" type="text" />
-<button>Ny joke</button>
+<button id="sendKnap">Ny joke</button>
+
+
