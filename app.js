@@ -5,7 +5,8 @@ const config = require('./config');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
-app.use('/joke', require('./routes/joke'));
+app.use('/api/jokes', require('./routes/joke'));
+app.use('/api/othersites', require('./routes/site'))
 
 
 const port = process.env.PORT || config.localPort; // Heroku

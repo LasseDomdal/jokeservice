@@ -9,7 +9,7 @@ router
             let jokes = await controller.getJokes();
             response.send(jokes);
         } catch (e) {
-            sendStatus(e, response);
+              sendStatus(e, response);
         }
     })
     .post('/api/jokes', async (request, response) => {
