@@ -5,4 +5,4 @@ const joke = new mongoose.Schema({
   punchline: String,
 });
 
-module.exports = mongoose.model("Joke", joke);
+module.exports = mongoose.model('Joke', joke);
