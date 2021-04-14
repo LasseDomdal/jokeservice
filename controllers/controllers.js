@@ -1,6 +1,6 @@
 // controllers.js
 const mongoose = require("mongoose");
-const Company = require("../models/Joke");
+const Joke = require("../models/Joke");
 const config = require("../config");
 
 mongoose.connect(config.databaseURI, {

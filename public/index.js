@@ -14,14 +14,14 @@ async function getText(url) {
 }
 
 async function generateJokesList(jokes) {
-    let template = await getText('/jokes.hbs');
+    let template = await getText('/jokeservice.hbs');
     let compiledTemplate = Handlebars.compile(template);
     return compiledTemplate({jokes});
 }
 
 async function main() {
     try {
-        let jokes = await get('/joke');
+        let jokes = await get('/api/jokes');
         document.body.innerHTML = await generateJokesList(jokes);
     } catch (e) {
         console.log(e.name + ": " + e.message);
