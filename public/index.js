@@ -1,6 +1,7 @@
 // index.js
 // const router = require("../routes/joke");
 
+// standard get - gettext - post
 async function get(url) {
     const respons = await fetch(url);
     if (respons.status !== 200) // OK
@@ -27,24 +28,7 @@ async function post(url, objekt) {
 }
 
 
-async function generateJokesList(jokes) {
-    let template = await getText('/jokeservice.hbs');
-    let compiledTemplate = Handlebars.compile(template);
-    return compiledTemplate({jokes});
-}
-
-async function main() {
-    try {
-        let jokes = await get('/api/jokes');
-        document.body.innerHTML = await generateJokesList(jokes);
-        document.getElementById("sendKnap").addEventListener("click", getJokeValues);
-    } catch (e) {
-        console.log(e.name + ": " + e.message);
-    }
-}
-main();
-
-
+// generate list of other jokeservices
 async function generateSitesList(sites) {
     let template = await getText('/otherSites.hbs');
     let compiledTemplate = Handlebars.compile(template);
@@ -61,6 +45,8 @@ async function getOtherSites() {
 }
 getOtherSites();
 
+
+// geneerate list of other sites jokes
 async function generateOtherJokesList(otherJokes) {
     let template = await getText('/otherJokes.hbs');
     let compiledTemplate = Handlebars.compile(template);
@@ -68,23 +54,31 @@ async function generateOtherJokesList(otherJokes) {
 }
 
 function chooseSite() {
-    let otherSite = sitePicker.value;
-    console.log(otherSite.adress);
+    let sitePicker = document.getElementById("sitePicker").value;
+
+
 }
 
 async function getOtherJokes() {
     try {
-        let otherJokes = await get('otherSite.adress' + "/api/jokes");
-        document.body.innerHTML += await generateSitesList(otherJokes);
-        document.getElementById("sitePicker").addEventListener("change", chooseRum);
-        let sitePicker = document.querySelector("#sitePicker");
+        // let e =  document.getElementById("sitePicker").addEventListener("change", function() {
+        //     e.options[e.selectedIndex].value
+        // });
+        // console.log(e);
+        // let otherSite = e.value;
+        let e =  document.getElementById("sitePicker");
+        let selectedValue = e.options[e.selectedIndex].value;
+        let otherJokes = await get( selectedValue +"/api/jokes");
+        // let otherJokes = await get(  "http://farjokes.herokuapp.com/api/jokes");
+        document.body.innerHTML += await generateOtherJokesList(otherJokes);
     } catch (e) {
         console.log(e.name + ": " + e.message);
     }
 }
+getOtherJokes();
 
 
-
+// list of jokes from database and generate new jokes to database
 async function getJokeValues () {
     joke = {
         setup: document.getElementById("setup").value,
@@ -98,3 +92,20 @@ function clearFelter() {
     document.getElementById("setup").value = " ";
     document.getElementById("punchline").value = " ";
 }
+
+async function generateJokesList(jokes) {
+    let template = await getText('/jokeservice.hbs');
+    let compiledTemplate = Handlebars.compile(template);
+    return compiledTemplate({jokes});
+}
+
+async function main() {
+    try {
+        let jokes = await get('/api/jokes');
+        document.body.innerHTML = await generateJokesList(jokes);
+        document.getElementById("sendKnap").addEventListener("click", getJokeValues);
+    } catch (e) {
+        console.log(e.name + ": " + e.message);
+    }
+}
+main();

@@ -1,9 +1,9 @@
 <p>andre sider</p>
-<select name="sites" id="sites">
 
 
+<select id="sitePicker" onchange="getOtherJokes()">
     {{#each sites}}
-        <option id="sitePicker" value="{{name}}">{{name}}</option>
+        <option value="{{address}}" selected="selected">{{name}}</option>
     {{/each}}
 </select>
 
