@@ -2,9 +2,9 @@
 const express = require("express");
 const app = express();
 const config = require("./config");
-const cors = require("cors");
+// const cors = require("cors");
 
-app.use(cors());
+// app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
