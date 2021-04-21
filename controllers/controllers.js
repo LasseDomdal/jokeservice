@@ -15,18 +15,6 @@ exports.createJoke = function (setup, punchline) {
   });
 };
 
-// exports.createJoke("Hvordan får man en fisk til at grine?", "Man putter den i kildevand");
-// exports.createJoke("Hvornår har bageren fødselsdag?", "Den 11/11");
-
-// exports.getJoke = function (jokeId) {
-//   return Joke.findById(jokeId).exec();
-// };
-
 exports.getJokes = function () {
   return Joke.find().exec();
 };
-
-exports.getSites = function () {
-  return Site.find().exec();
-};
-

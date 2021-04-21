@@ -13,6 +13,22 @@ router.get("/", async (request, response) => {
     sendStatus(e, response);
   }
 });
+//Upload vores site til registry
+router.post("/", async (request, response) => {
+  try {
+    const url = "https://krdo-joke-registry.herokuapp.com/api/services";
+    let sites = await get(url);
+    response.send({ sites, message: "Site saved!" });
+  } catch (e) {
+    sendStatus(e, response);
+  }
+});
+router.delete("/"),
+  async (request, response) => {
+    const url = "https://krdo-joke-registry.herokuapp.com/api/services";
+    let sites = await get(url);
+    response.send({ sites, message: "Site deleted!" });
+  };
 
 function sendStatus(e, response) {
   console.error("Exception: " + e);

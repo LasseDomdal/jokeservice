@@ -24,7 +24,7 @@ async function post(url, objekt) {
     body: JSON.stringify(objekt),
     headers: { "Content-Type": "application/json" },
   });
-  if (respons.status !== 201 || respons.status !== 200)
+  if (respons.status !== 200)
     // Created
     throw new Error(respons.status);
   return await respons.json();
@@ -128,6 +128,7 @@ async function deleteSite() {
   };
   await deLete("/api/othersites", sletSite);
 }
+deleteSite();
 
 async function deLete(url) {
   let respons = await fetch(url, {
