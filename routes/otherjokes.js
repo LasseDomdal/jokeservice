@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router
-    .get('/', async (request, response) => {
+    .get('/:site', async (request, response) => {
         try {
             let sites = await controller.getSites();
             response.send(sites);
