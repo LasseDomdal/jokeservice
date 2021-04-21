@@ -1,5 +1,6 @@
 const controller = require("../controllers/controllers");
 const express = require('express');
+const fetch = require("node-fetch");
 const router = express.Router();
 
 router
@@ -18,4 +19,12 @@ function sendStatus(e, response) {
     response.status(500).send(e);
 }
 
+async function get(url) {
+    const respons = await fetch(url);
+    if (respons.status !== 200)
+      // OK
+      throw new Error(respons.status);
+    return await respons.json();
+  }
+  
 module.exports = router;
