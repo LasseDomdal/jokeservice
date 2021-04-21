@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get("/:site", async (request, response) => {
   try {
-    const url = "farjokes.heroku.com/api/jokes";
-    let sites = await get(url);
-    response.send(sites);
+    let site = request.params.site;
+    let ohtherjokes= await get("https://" + site + "/api/jokes");
+    response.send(ohtherjokes);
   } catch (e) {
     sendStatus(e, response);
   }
