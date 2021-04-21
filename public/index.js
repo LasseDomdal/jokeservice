@@ -101,7 +101,8 @@ async function main() {
   try {
     let jokes = await get("/api/jokes");
     randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-    document.body.innerHTML = await generateJokesList(randomJoke);
+    document.body.innerHTML += await generateJokesList(randomJoke);
+    getOtherSites();
   } catch (e) {
     console.log(e.name + ": " + e.message);
   }
