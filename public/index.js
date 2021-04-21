@@ -39,7 +39,7 @@ async function generateSitesList(sites) {
 
 async function getOtherSites() {
   try {
-    let otherSites = await get("/api/othersites");
+    let otherSites = await get("api/othersites");
     document.body.innerHTML += await generateSitesList(otherSites);
   } catch (e) {
     console.log(e.name + ": " + e.message);
@@ -102,7 +102,6 @@ async function main() {
     let jokes = await get("/api/jokes");
     randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     document.body.innerHTML += await generateJokesList(randomJoke);
-    getOtherSites();
   } catch (e) {
     console.log(e.name + ": " + e.message);
   }
