@@ -46,8 +46,6 @@ async function getOtherSites() {
   }
 }
 
-getOtherSites();
-
 // geneerate list of other sites jokes
 async function generateOtherJokesList(otherJokes) {
   let template = await getText("/otherJokes.hbs");
@@ -59,7 +57,7 @@ async function getOtherJokes() {
   try {
     let e = document.getElementById("sitePicker");
     let selectedValue = e.options[e.selectedIndex].value;
-    let otherJokes = await get(selectedValue + "/api/jokes");
+    let otherJokes = await get(selectedValue + "api/jokes");
     document.body.innerHTML += await generateOtherJokesList(otherJokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
@@ -102,6 +100,7 @@ async function main() {
     let jokes = await get("/api/jokes");
     randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     document.body.innerHTML += await generateJokesList(randomJoke);
+    getOtherSites();
   } catch (e) {
     console.log(e.name + ": " + e.message);
   }
