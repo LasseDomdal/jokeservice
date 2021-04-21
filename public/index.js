@@ -112,11 +112,14 @@ main();
 // oprette site på fælles database
 async function PostSite() {
   let voresSite = {
-    name: "Lasse og Williams sjove jokes",
-    address: "http://jokerservice.herokuapp.com",
+    name: "Den rigtige Lasse og Williams sjove jokes",
+    address: "https://jokerservice.herokuapp.com",
     secret: "jokerservice",
   };
-  await post("/api/othersites", voresSite);
+  await post(
+    "https://krdo-joke-registry.herokuapp.com/api/services",
+    voresSite
+  );
 }
 // PostSite();
 
