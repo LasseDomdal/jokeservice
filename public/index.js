@@ -39,7 +39,7 @@ async function generateSitesList(sites) {
 
 async function getOtherSites() {
   try {
-    let otherSites = await get("api/othersites");
+    let otherSites = await get("/api/othersites");
     document.body.innerHTML += await generateSitesList(otherSites);
   } catch (e) {
     console.log(e.name + ": " + e.message);
@@ -57,7 +57,13 @@ async function getOtherJokes() {
   try {
     let e = document.getElementById("sitePicker");
     let selectedValue = e.options[e.selectedIndex].value;
-    let otherJokes = await get(selectedValue + "api/jokes");
+    let otherJokes;
+    //Tjekker om sidste char i URL'en er en skråstreg
+    if (selectedValue.slice(-1) !== "/") {
+      otherJokes = await get(selectedValue + "/api/jokes");
+    } else {
+      otherJokes = await get(selectedValue + "api/jokes");
+    }
     document.body.innerHTML += await generateOtherJokesList(otherJokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
