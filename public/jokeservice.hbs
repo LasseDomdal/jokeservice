@@ -1,15 +1,33 @@
 {{!-- jokeservice.hbs --}}
-<h1>Jokes</h1>
-<ul>
-    {{#each jokes}}
-    <li>{{setup}} - {{punchline}}</li>
-    {{/each}}
-</ul>
+<div id="ContentContainer">
+    <p id="logo" class="logo">JOKESERVICE</p>
 
-<label for="setup">Setup</label>
-<input id="setup" type="text" />
-<label for="punchline">Punchline</label>
-<input id="punchline" type="text" />
-<button id="sendKnap">Ny joke</button>
+    <br />
+    <br />
+
+    <p id="joke">{{randomJoke.setup}} - {{randomJoke.punchline}}</p>
+    <button id="hentJoke" onclick="nyJoke()">Hent ny joke</button>
 
 
+
+    <br />
+    <br />
+
+    <div id=" nyjokeContainer">
+        <h3>Tilføj ny joke</h3>
+        <label for="setup">Setup</label>
+        <br />
+        <input id="setup" class="txtfield" type="text" />
+        <br />
+        <label for="punchline">Punchline</label>
+        <br />
+        <input id="punchline" class="txtfield" type="text" />
+        <br />
+        <button id="sendKnap" onclick="getJokeValues()">Ny joke</button>
+    </div>
+
+    <br />
+    <br />
+
+
+</div>

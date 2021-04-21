@@ -1,9 +1,9 @@
-<p>andre sider</p>
-
-
-<select id="sitePicker" onchange="getOtherJokes()">
-    {{#each sites}}
-        <option value="{{address}}" selected="selected">{{name}}</option>
-    {{/each}}
-</select>
-
+<div id="ContentContainer">
+    <h3>Andre sider</h3>
+    <select id="sitePicker" onchange="getOtherJokes()" default="VÆLG SITE">
+        <option value="noSelect" selected>VÆLG SITE</option>
+        {{#each sites}}
+        <option value="{{address}}">{{name}}</option>
+        {{/each}}
+    </select>
+</div>
