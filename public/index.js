@@ -121,21 +121,21 @@ async function PostSite() {
 // PostSite();
 
 // delete site
-async function deleteSite() {
-  let sletSite = {
-    address: "http://jokerservice.herokuapp.com",
-    secret: "jokerservice",
-  };
-  await deLete("/api/othersites", sletSite);
-}
-deleteSite();
+// async function deleteSite() {
+//   let sletSite = {
+//     address: "http://jokerservice.herokuapp.com",
+//     secret: "jokerservice",
+//   };
+//   await deLete("/api/othersites", sletSite);
+// }
+// deleteSite();
 
-async function deLete(url) {
-  let respons = await fetch(url, {
-    method: "DELETE",
-  });
-  if (respons.status !== 200)
-    // OK
-    throw new Error(respons.status);
-  return await respons.json();
-}
+// async function deLete(url) {
+//   let respons = await fetch(url, {
+//     method: "DELETE",
+//   });
+//   if (respons.status !== 200)
+//     // OK
+//     throw new Error(respons.status);
+//   return await respons.json();
+// }
